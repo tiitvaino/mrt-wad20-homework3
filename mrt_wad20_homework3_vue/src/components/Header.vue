@@ -8,34 +8,132 @@
         <input type="text" name="search"><button type="button">Search</button>
       </div>
       <div class="avatar-container">
-        <img src="../../public/images/avatar.png" class="avatar" alt="Me">
+        <img class="avatar" alt="Me"
+        :src="user.avatar"
+        @click="showUserInfo()"
+        >
       </div>
     </nav>
-    <div id="user-info">
-      <p class="user-name"><!--John Doe--></p>
-      <p class="user-email"><!--john.doe@example.com--></p>
-      <hr> <a href="browse.html" class="browse-button">Browse</a>
+    <div id="user-info" v-bind:style="{ display: isUserDisplayed}">
+      <p class="user-name">{{user.firstname}} {{user.lastname}}</p>
+      <p class="user-email">{{user.email}}</p>
       <hr>
-      <a href="login.html">Log Out</a>
+      <router-link :to="{name: 'browse_page'}">
+        <span>Browse</span>
+      </router-link>
+      <hr>
+      <router-link :to="{name: 'login_page'}">
+        <span>Log out</span>
+      </router-link>
     </div>
   </header>
-
 </template>
 <script>
 export default {
     name: 'Header',
+    data: {
+      isUserDisplayed: "none",
+    },
     computed: {
-
+      user: function () {
+        return this.$todo.state.user
+      }
     },
     props: {
 
     },
     mehtods: {
+      showUserInfo: function(){
+        if (this.data.isUserDisplayed == "none"){
+          this.data.isUserDisplayed = "block";
+        }
+        else {
+          this.data.isUserDisplayed = "none";
+        }
 
-    }
+      }
+    },
 
 }
 </script>
 <style scoped>
+  header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+  }
 
+  header:hover {
+    box-shadow: 0 -20px 30px #4d4d4d;
+  }
+
+  nav {
+    display: flex;
+    background-color: #ffffff;
+    align-items: center;
+  }
+
+  nav div {
+    height: 30px;
+    flex-grow: 4;
+    padding: 10px;
+  }
+
+  nav div img {
+    height: 100%;
+    width: 30px;
+    margin-left: 15px;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  nav div.search-container>input {
+    box-sizing: border-box;
+    height: 30px;
+    width: 80%;
+    margin: 0;
+    padding: 5px;
+    border: 1px solid #e0e0e0;
+  }
+  nav div.search-container>button {
+    height: 30px;
+    width: 20%;
+    margin: 0;
+    padding: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  nav div.avatar-container {
+    margin-right: 15px;
+    text-align: right;
+  }
+
+  span {
+    color: #40c4ff;
+    text-decoration: underline ;
+  }
+
+  #user-info {
+    position: absolute;
+    right: 0;
+    background-color: #ffffff;
+    width: fit-content;
+    height: fit-content;
+    text-align: left;
+    padding: 10px;
+    box-shadow: 0px 8px 8px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  #user-info hr {
+    width: 100%;
+    border: 1px solid #f0f0f0;
+  }
+
+  #user-info p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 </style>
