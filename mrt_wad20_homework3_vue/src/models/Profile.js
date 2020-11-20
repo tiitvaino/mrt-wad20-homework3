@@ -1,4 +1,4 @@
-class Profile {
+export default class Profile {
     constructor(firstname, lastname, email, avatar) {
         this.firstname = firstname;
         this.lastname = lastname;

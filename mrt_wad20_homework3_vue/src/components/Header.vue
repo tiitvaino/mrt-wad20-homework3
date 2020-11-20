@@ -2,7 +2,7 @@
   <header>
     <nav>
       <div class="logo-container">
-        <img src="../../public/images/logo.png" alt="postIt">
+        <img src="/images/logo.png" alt="postIt">
       </div>
       <div class="search-container">
         <input type="text" name="search"><button type="button">Search</button>
@@ -31,12 +31,12 @@
 <script>
 export default {
     name: 'Header',
-    data: {
-      isUserDisplayed: "none",
+    data: function () {
+      return {isUserDisplayed: "none",}
     },
     computed: {
       user: function () {
-        return this.$todo.state.user
+        return this.$store.state.user
       }
     },
     props: {

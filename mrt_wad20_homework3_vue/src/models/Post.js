@@ -1,4 +1,4 @@
-class Post {
+export default class Post {
     constructor(id, author, createTime, text, media, likes) {
         this.id = id;
         this.author = author;
