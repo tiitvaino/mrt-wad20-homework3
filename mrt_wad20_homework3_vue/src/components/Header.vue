@@ -10,11 +10,11 @@
       <div class="avatar-container">
         <img class="avatar" alt="Me"
         :src="user.avatar"
-        @click="showUserInfo()"
+        @click="isUserDisplayed = !isUserDisplayed"
         >
       </div>
     </nav>
-    <div id="user-info" v-bind:style="{ display: isUserDisplayed}">
+    <div id="user-info" v-bind:style="{ display: isUserDisplayed ? 'block': 'none'}">
       <p class="user-name">{{user.firstname}} {{user.lastname}}</p>
       <p class="user-email">{{user.email}}</p>
       <hr>
@@ -22,7 +22,7 @@
         <span>Browse</span>
       </router-link>
       <hr>
-      <router-link :to="{name: 'login_page'}">
+      <router-link :to="{name: ''}">
         <span>Log out</span>
       </router-link>
     </div>
@@ -32,7 +32,7 @@
 export default {
     name: 'Header',
     data: function () {
-      return {isUserDisplayed: "none",}
+      return {isUserDisplayed: false,}
     },
     computed: {
       user: function () {
@@ -44,11 +44,11 @@ export default {
     },
     mehtods: {
       showUserInfo: function(){
-        if (this.data.isUserDisplayed == "none"){
-          this.data.isUserDisplayed = "block";
+        if (this.isUserDisplayed == "none"){
+          this.isUserDisplayed = "block";
         }
         else {
-          this.data.isUserDisplayed = "none";
+          this.isUserDisplayed = "none";
         }
 
       }
