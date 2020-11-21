@@ -2,7 +2,15 @@
  <div>
     <Header :user="user"/>
     <section class="main-container">
-      <div class="profiles"></div>
+      <div class="profiles">
+        <div class="profile-container">
+          <div class="profile-picture" style="background-image: url('todo')"></div>
+          <div class="profile-name">todo}</div>
+          <div class="profile-follow">
+            <button type="button" class="profile-follow-button">Follow</button>
+          </div>
+        </div>
+      </div>
     </section>
   </div>
 </template>

@@ -22,7 +22,7 @@
         <span>Browse</span>
       </router-link>
       <hr>
-      <router-link :to="{name: ''}">
+      <router-link :to="{name: 'login_page'}">
         <span>Log out</span>
       </router-link>
     </div>
