@@ -26,6 +26,10 @@ body {
     height: 100%;
 }
 
+html {
+  height: 100%;
+}
+
 body {
     background-color: #0277bd;
     color: #263238;
@@ -44,14 +48,12 @@ button:hover {
     box-shadow: 0 0 5px rgba(38, 50, 56, 0.7);
 }
 
-
-  .main-container {
-      width: 50%;
-      min-height: 100%;
-      margin: auto auto;
-      padding: 90px 15px 15px 15px;
-      background-color: #ffffff;
-  }
-
+.main-container {
+    width: 50%;
+    min-height: 100%;
+    margin: auto auto;
+    padding: 90px 15px 15px 15px;
+    background-color: #ffffff;
+}
 
 </style>
