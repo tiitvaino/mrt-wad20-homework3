@@ -15,7 +15,7 @@ Vue.use(VueRouter);
 Vue.use(Vuex);
 
 const routes = [
-  {path: '/login',name: "login_page", component: LoginPage},
+  {path: '/login', name: "login_page", component: LoginPage},
   {path: '/posts', name: "posts_page", component: PostsPage},
   {path: '/browse', name: "browse_page", component: BrowsePage},
 ];
@@ -24,12 +24,21 @@ const router = new VueRouter({routes});
 
 const store = new Vuex.Store({
   state: {
-    user: new Profile("Firstname","Lastname","email@email.email","./images/avatar.png",),
+    user: new Profile("Firstname","Lastname","email@email.email","./images/avatar.png"),
+    profiles: []
   },
-  mutations: {},
+  mutations: {
+    setProfiles: function(state, newProfiles) {
+      this.state.profiles = newProfiles;
+    }
+  },
   getters: {
     getUser: (state) => () => {
-      return state.user
+      return state.user;
+    },
+
+    getProfiles: (state) => () => {
+      return state.profiles;
     }
   },
 });

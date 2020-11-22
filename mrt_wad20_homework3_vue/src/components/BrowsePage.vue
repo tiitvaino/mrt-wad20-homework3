@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <div v-for="n in names" v-bind:key='n'>{{ n }}</div> -->
-    <!-- <Header :user="user"/> -->
+    <Header :user="cuser"/>
     <section class="main-container">
       <div class="profiles">
         <Profile v-for="thing in profiles" v-bind:key='thing.id' :avatar='thing.avatar' :first_name='thing.firstname' :last_name='thing.lastname'></Profile>
@@ -10,34 +10,32 @@
   </div>
 </template>
 <script>
-// import Header from './Header'
+import Header from './Header'
 import Profile from './Profile'
 import axios from 'axios'
 
 export default {
   name: 'Browse',
-  data: () => {
-    return {
-      internalprofilelist: []
-    }
-  },
 
   computed: {
     profiles: function() {
-      if (this.internalprofilelist.length == 0)
+      if (this.$store.getters.getProfiles().length == 0)
         this.loadProfilesRequest();
 
-      return this.internalprofilelist;
+      return this.$store.getters.getProfiles();
     },
+
+    cuser: function() {
+      return this.$store.getters.getUser();
+    }
   },
 
   methods: {
     loadProfilesRequest: async function() {
-      console.log("Getting profiles: start");
       await axios.get('https://private-anon-7a5a5239ec-wad20postit.apiary-mock.com/profiles')
 
       .then((response) => {
-        this.internalprofilelist = response.data;
+        this.$store.commit('setProfiles', response.data);
       })
 
       .catch(function(error) {
@@ -48,7 +46,7 @@ export default {
   },
 
   components: {
-    // Header,
+    Header,
     Profile
   }
 }
