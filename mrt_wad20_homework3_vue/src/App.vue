@@ -27,7 +27,7 @@ body {
 }
 
 html {
-  height: 100%;
+    height: 100%;
 }
 
 body {
@@ -50,7 +50,7 @@ button:hover {
 
 .main-container {
     width: 50%;
-    min-height: 100%;
+    min-height: 100vh;
     margin: auto auto;
     padding: 90px 15px 15px 15px;
     background-color: #ffffff;
