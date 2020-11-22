@@ -38,16 +38,16 @@ export default {
     computed: {
       user: function () {
         if (!this.$store.getters.getUser()){
-          console.log("On tyhi")
+          this.loadUserRequest();
         }
-        this.loadUserRequest()
-        return this.$store.getters.getUser()
+
+        return this.$store.getters.getUser();
       }
     },
     props: {
 
     },
-    mehtods: {
+    methods: {
       showUserInfo: function(){
         if (this.isUserDisplayed == "none"){
           this.isUserDisplayed = "block";
@@ -57,7 +57,7 @@ export default {
         }
       },
     loadUserRequest: async function() {
-      await axios.get('https://private-anon-7a5a5239ec-wad20postit.apiary-mock.com/profiles/1')
+      await axios.get('https://private-anon-88cfa17c4c-wad20postit.apiary-mock.com/users/1')
 
         .then((response) => {
           console.log(response)
