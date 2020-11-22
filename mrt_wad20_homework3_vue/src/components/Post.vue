@@ -94,13 +94,9 @@ export default {
 </script>
 <style scoped>
 
-  * {
-    font: 15px "Roboto Slab", serif;
-    outline: none;
-  }
-
-.post {
-  min-width: 100%;
+* {
+  font: 15px "Roboto Slab", serif;
+  outline: none;
 }
 
 .post-container {
@@ -110,7 +106,6 @@ export default {
   margin: auto auto;
   box-shadow: 0 0 15px rgba(38, 50, 56, 0.33);
   border-radius: 5px;
-
 }
 
 .post-content {
