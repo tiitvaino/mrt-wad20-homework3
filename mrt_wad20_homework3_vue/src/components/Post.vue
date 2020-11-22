@@ -2,7 +2,7 @@
   <div class="post">
     <div class="post-container">
       <div class="post-name">
-        <div class="post-picture" :style="cavatar"></div>
+        <div class="post-picture" :style="author.avatar | backgroundImage"></div>
         <div class="post-author"> {{author.firstname}} {{author.lastname}}</div>
         <div class="post-time">{{createTime}}</div>
       </div>
@@ -30,11 +30,13 @@ export default {
     }
   },
 
-  computed: {
-    cavatar: function() {
-      return `content: url('${this.author.avatar}')`;
-    },
+  filters: {
+    backgroundImage: function(avatarURL) {
+      return `background-image: url('${avatarURL}')`;
+    }
+  },
 
+  computed: {
     cname: function() {
       return this.author[0] + " " + this.author[1];
     },
@@ -101,7 +103,6 @@ export default {
   min-width: 100%;
 }
 
-
 .post-container {
   width: 100%;
   height: 100%;
@@ -114,13 +115,15 @@ export default {
 
 .post-content {
   width: 100%;
+  height: 100%;
 }
 
 .post-picture {
-  width: 50px;
-  height: 50px;
-  background-size: cover;
-  background-position: top;
+  width: 27px;
+  height: 27px;
+  background-size: cover !important;
+  background-position: top !important;
+  margin-right: 10px;
   border-radius: 50%;
   padding: 10px 10px 10px 10px;
 }
@@ -134,10 +137,12 @@ export default {
 .post-time {
   padding-left: 55%;
   padding-top: 20px;
+  line-height: 0%;
 }
 
 .post-author {
-  padding-top: 25px
+  padding-top: 25px;
+  line-height: 0%;
 }
 
 .post-like {
@@ -152,7 +157,7 @@ export default {
   font-weight: 600;
 }
 
-.post-like-button{
+.post-like-button {
   background-image: url(/images/like.png);
     background-size: 15px;
     background-repeat: no-repeat;

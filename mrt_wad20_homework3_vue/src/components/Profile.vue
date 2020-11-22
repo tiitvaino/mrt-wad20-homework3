@@ -80,8 +80,8 @@ export default {
 .profile-picture {
   width: 100px;
   height: 100px;
-  background-size: cover;
-  background-position: top;
+  background-size: cover !important;
+  background-position: top !important;
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
