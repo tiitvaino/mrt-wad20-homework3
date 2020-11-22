@@ -1,4 +1,5 @@
 <template>
+  <div class="post">
     <div class="post-container">
       <div class="post-name">
         <div class="post-picture" :style="cavatar"></div>
@@ -18,6 +19,7 @@
         </button>
       </div>
     </div>
+  </div>
 </template>
 <script>
 export default {
@@ -92,6 +94,10 @@ export default {
 }
 </script>
 <style scoped>
+
+.post {
+  min-width: 100%;
+}
 
 
 .post-container {
