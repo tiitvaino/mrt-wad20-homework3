@@ -1,6 +1,6 @@
 <template>
 <div class="profile-container">
-  <div class="profile-picture" :style="cavatar"></div>
+  <div class="profile-picture" :style="avatar | backgroundImage"></div>
   <div class="profile-name">{{ cname }}</div>
   <div class="profile-follow">
     <button type="button" class="profile-follow-button" @click="follow()" :style="{backgroundColor: ccolor, color: ctextcolor}">
@@ -20,11 +20,13 @@ export default {
     }
   },
 
-  computed: {
-    cavatar: function() {
-      return `background-image: url('${this.avatar}')`;
-    },
+  filters: {
+    backgroundImage: function(avatarURL) {
+      return `background-image: url('${avatarURL}')`;
+    }
+  },
 
+  computed: {
     cname: function() {
       return this.first_name + " " + this.last_name;
     },
