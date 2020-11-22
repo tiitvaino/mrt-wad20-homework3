@@ -29,6 +29,7 @@
   </header>
 </template>
 <script>
+import axios from 'axios'
 export default {
     name: 'Header',
     data: function () {
@@ -36,7 +37,11 @@ export default {
     },
     computed: {
       user: function () {
-        return this.$store.state.user
+        if (!this.$store.getters.getUser()){
+          console.log("On tyhi")
+        }
+        this.loadUserRequest()
+        return this.$store.getters.getUser()
       }
     },
     props: {
@@ -51,6 +56,19 @@ export default {
           this.isUserDisplayed = "none";
         }
       },
+    loadUserRequest: async function() {
+      await axios.get('https://private-anon-7a5a5239ec-wad20postit.apiary-mock.com/profiles/1')
+
+        .then((response) => {
+          console.log(response)
+          this.$store.commit('setUser', response.data);
+        })
+
+        .catch(function(error) {
+          console.log(error);
+          alert('error: could not load user');
+        });
+    },
 
     },
 

@@ -8,7 +8,7 @@ import PostsPage from "./components/PostsPage";
 import LoginPage from "./components/LoginPage";
 //import Media from "./models/Media";
 //import Post from "./models/Post";
-import Profile from "./models/Profile";
+//import Profile from "./models/Profile";
 
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
@@ -26,9 +26,9 @@ const router = new VueRouter({routes});
 
 const store = new Vuex.Store({
   state: {
-    user: new Profile("Firstname","Lastname","email@email.email","./images/avatar.png"),
+    user: NaN,//new Profile("Firstname","Lastname","email@email.email","./images/avatar.png"),
     profiles: [],
-    posts: []
+    posts: [],
   },
   mutations: {
     setProfiles: function(state, newProfiles) {
@@ -36,7 +36,13 @@ const store = new Vuex.Store({
     },
     setPosts: function (state, newPosts) {
       this.state.posts = newPosts;
-    }
+    },
+    setUser: function (state, newUser) {
+      this.state.user = newUser;//.firstname;
+      //this.state.user.lastname = newUser.lastname;
+      //this.state.user.email = newUser.email;
+      //this.state.user.avatar = newUser.avatar;
+    },
   },
   getters: {
     getUser: (state) => () => {
