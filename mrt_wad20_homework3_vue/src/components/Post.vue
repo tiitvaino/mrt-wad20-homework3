@@ -12,7 +12,7 @@
       </div>
       <div class="post-content" :style="cpost"></div>
       <div class="post-text">{{ ctext }}</div>
-      <div class="post-like">
+      <div class="post-like" img src="images/like.png">
         <button type="button" class="post-like-button" @click="like()" v-bind:style="{backgroundColor: ccolor, color: ctextcolor}">
           {{ clikes }}
         </button>

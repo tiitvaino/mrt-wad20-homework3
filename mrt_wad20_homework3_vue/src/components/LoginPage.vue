@@ -22,7 +22,7 @@
         <input type="password" name="password" placeholder="Password">
       </div>
       <div>
-        <button class="button" >Log In</button>
+        <button class="button" @click="redirect()">Log In</button>
       </div>
       <div>
         <small>
@@ -43,8 +43,10 @@ export default {
   props: {
 
   },
-  mehtods: {
-
+  methods: {
+    redirect: function () {
+      this.$router.push("/posts")
+    }
   }
 
 }
