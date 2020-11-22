@@ -3,22 +3,7 @@
     <Header :user="user"/>
     <section class=" main-container ">
       <div class="post ">
-        <div class="post-author ">
-          <span class="post-author-info ">
-        <img src="/images/avatar.png" alt="Post author ">
-        <small>John Doe</small>
-        </span>
-          <small>Sep 18, 2020 15:16</small>
-        </div>
-        <div class="post-image ">
-          <img src="/images/logo.png " alt=" ">
-        </div>
-        <div class="post-title ">
-          <h3>I think it's going to rain</h3>
-        </div>
-        <div class="post-actions ">
-          <button type="button " name="like " class="like-button ">100k</button>
-        </div>
+        <Post v-for="thing in posts" v-bind:key='thing.id' :author='thing.author' :createTime='thing.createTime' :text='thing.text' :media='thing.media' :likes='thing.likes'></Post>
       </div>
     </section>
   </div>
@@ -26,19 +11,49 @@
 
 <script>
   import Header from './Header'
+  import axios from "axios";
+  import Post from './Post'
   export default {
     name: 'PostsPage',
+    data: () => {
+      return {
+        internalpostlist: []
+      }
+    },
+
     computed: {
+      posts: function() {
+        if (this.internalpostlist.length == 0)
+          this.loadPostsRequest();
 
+        return this.internalpostlist;
+      }
     },
+
     props: {
-
+      likes: String,
+      author: Array,
+      media: Array,
+      text: String
     },
-    mehtods: {
+    methods: {
+      loadPostsRequest: async function() {
+        console.log("Getting posts: start");
+        await axios.get('https://private-anon-7a5a5239ec-wad20postit.apiary-mock.com/posts')
 
+            .then((response) => {
+              this.internalpostlist = response.data;
+            })
+
+            .catch(function(error) {
+              console.log(error);
+              alert('error: could not load posts');
+            });
+      }
     },
     components: {
       Header,
+      Post
     },
   }
 </script>
