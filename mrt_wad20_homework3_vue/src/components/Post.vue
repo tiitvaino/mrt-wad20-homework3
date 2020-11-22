@@ -98,6 +98,10 @@ export default {
 </script>
 <style scoped>
 
+  * {
+    font: 15px "Roboto Slab", serif;
+    outline: none;
+  }
 
 .post {
   min-width: 100%;
@@ -157,9 +161,8 @@ export default {
 .post-text {
   padding-top: 10px;
   padding-left: 10px;
-  font-size: 150%;
-  font-family: 'Roboto Slab', serif;
-
+  font-size: 130%;
+  font-weight: 600;
 }
 
 </style>
