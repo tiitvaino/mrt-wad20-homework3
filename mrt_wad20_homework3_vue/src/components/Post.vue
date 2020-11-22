@@ -74,10 +74,10 @@ export default {
   },
 
   props: {
-    author: Array,
+    author: Object,
     createTime: String,
     text: String,
-    media: Array,
+    media: Object,
     likes: String
 
   },
@@ -105,7 +105,6 @@ export default {
 
 .post {
   min-width: 100%;
-
 }
 
 
@@ -130,7 +129,6 @@ export default {
   background-position: top;
   border-radius: 50%;
   padding: 10px 10px 10px 10px;
-
 }
 
 .post-name {
@@ -164,5 +162,4 @@ export default {
   font-size: 130%;
   font-weight: 600;
 }
-
 </style>

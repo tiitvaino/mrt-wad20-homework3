@@ -32,8 +32,8 @@
 
     props: {
       likes: String,
-      author: Array,
-      media: Array,
+      author: Object,
+      media: Object,
       text: String
     },
     methods: {
