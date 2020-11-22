@@ -3,7 +3,7 @@
   <div class="profile-picture" :style="cavatar"></div>
   <div class="profile-name">{{ cname }}</div>
   <div class="profile-follow">
-    <button type="button" class="profile-follow-button" @click="follow()" v-bind:style="{backgroundColor: ccolor, color: ctextcolor}">
+    <button type="button" class="profile-follow-button" @click="follow()" :style="{backgroundColor: ccolor, color: ctextcolor}">
       {{ ctext }}
     </button>
   </div>

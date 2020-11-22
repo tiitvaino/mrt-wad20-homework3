@@ -5,7 +5,7 @@
         <img src="/images/logo.png" alt="postIt">
       </div>
       <div class="search-container">
-        <input type="text" name="search"><button type="button">Search</button>
+        <input type="text" name="search" v-model="capitalize"><button type="button">Search</button>
       </div>
       <div class="avatar-container">
         <img class="avatar" alt="Me"
@@ -50,11 +50,12 @@ export default {
         else {
           this.isUserDisplayed = "none";
         }
+      },
 
-      }
     },
 
 }
+
 </script>
 <style scoped>
   header {
