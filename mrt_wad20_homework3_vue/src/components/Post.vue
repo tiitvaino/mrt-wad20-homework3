@@ -14,7 +14,7 @@
       <div class="post-content" v-if="cpostexists" :style="cpost"></div>
       <div class="post-text">{{ ctext }}</div>
       <div class="post-like">
-        <button type="button" class="post-like-button" @click="like()" v-bind:style="{backgroundColor: ccolor, color: ctextcolor}">
+        <button type="button" class="post-like-button" @click="like()" v-bind:style="{backgroundColor: ccolor}">
           {{ clikes }}
         </button>
       </div>
@@ -26,8 +26,7 @@ export default {
   name: 'Post',
   data: function() {
     return {
-      followcolor: 'rgb(180, 180, 180)',
-      textcolor: 'white'
+      followcolor: '#8a8a8a',
     }
   },
 
@@ -42,10 +41,6 @@ export default {
 
     ccolor: function() {
       return this.followcolor;
-    },
-
-    ctextcolor: function() {
-      return this.textcolor;
     },
 
     ctext: function() {
@@ -84,13 +79,12 @@ export default {
 
   methods: {
     like: function() {
-      if (this.followcolor == 'rgb(180, 180, 180)') {
-        this.followcolor = 'rgb(1, 87, 155)';
+      if (this.followcolor == '#8a8a8a') {
+        this.followcolor = ' #01579b';
       }
 
       else {
-        this.followcolor = 'rgb(180, 180, 180)';
-        this.textcolor = 'white';
+        this.followcolor = '#8a8a8a';
       }
     }
   }
@@ -151,15 +145,27 @@ export default {
   padding: 10px;
 }
 
-.post-like button {
-  width: 35%;
-  border: 1px solid rgb(1, 87, 155);
-}
-
 .post-text {
   padding-top: 10px;
   padding-left: 10px;
   font-size: 130%;
   font-weight: 600;
 }
+<<<<<<< HEAD
+=======
+.post-like-button{
+  background-image: url(/images/like.png);
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-color: #8a8a8a;
+    width: 60px;
+    height: 25px;
+    padding-left: 23px;
+    line-height: 10px;
+    text-align: left;
+    border: none;
+    color: "white"
+}
+
 </style>
