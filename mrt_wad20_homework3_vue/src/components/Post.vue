@@ -11,9 +11,9 @@
           <source :src="cpostvideourl" type="video/mp4">
         </video>
       </div>
-      <div class="post-content" :style="cpost"></div>
+      <div class="post-content" v-if="cpostexists" :style="cpost"></div>
       <div class="post-text">{{ ctext }}</div>
-      <div class="post-like" img src="images/like.png">
+      <div class="post-like">
         <button type="button" class="post-like-button" @click="like()" v-bind:style="{backgroundColor: ccolor, color: ctextcolor}">
           {{ clikes }}
         </button>
@@ -26,7 +26,7 @@ export default {
   name: 'Post',
   data: function() {
     return {
-      followcolor: 'rgb(1, 87, 155)',
+      followcolor: 'rgb(180, 180, 180)',
       textcolor: 'white'
     }
   },
@@ -61,11 +61,15 @@ export default {
     },
 
     cpostvideo: function () {
-      return this.media.type=="video";
+      return this.media!=null && this.media.type=="video";
     },
 
     clikes: function () {
       return this.likes;
+    },
+
+    cpostexists: function () {
+      return this.media!=null;
     }
   },
 
@@ -80,13 +84,12 @@ export default {
 
   methods: {
     like: function() {
-      if (this.followcolor == 'rgb(1, 87, 155)') {
-        this.followcolor = 'rgb(255, 255, 255)';
-        this.textcolor = 'black';
+      if (this.followcolor == 'rgb(180, 180, 180)') {
+        this.followcolor = 'rgb(1, 87, 155)';
       }
 
       else {
-        this.followcolor = 'rgb(1, 87, 155)';
+        this.followcolor = 'rgb(180, 180, 180)';
         this.textcolor = 'white';
       }
     }
@@ -95,8 +98,10 @@ export default {
 </script>
 <style scoped>
 
+
 .post {
   min-width: 100%;
+
 }
 
 
@@ -145,7 +150,7 @@ export default {
 }
 
 .post-like button {
-  width: 100%;
+  width: 35%;
   border: 1px solid rgb(1, 87, 155);
 }
 
@@ -153,6 +158,8 @@ export default {
   padding-top: 10px;
   padding-left: 10px;
   font-size: 150%;
+  font-family: 'Roboto Slab', serif;
+
 }
 
 </style>
