@@ -70,6 +70,7 @@ button {
   }
 
   .login-page {
+    padding-top: 15%;
     width: 100%;
     height: 100%;
     display: flex;
