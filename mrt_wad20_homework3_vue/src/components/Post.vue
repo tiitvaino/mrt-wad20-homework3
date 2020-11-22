@@ -151,8 +151,7 @@ export default {
   font-size: 130%;
   font-weight: 600;
 }
-<<<<<<< HEAD
-=======
+
 .post-like-button{
   background-image: url(/images/like.png);
     background-size: 15px;
