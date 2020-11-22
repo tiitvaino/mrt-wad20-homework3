@@ -1,20 +1,18 @@
 <template>
-  <div class="post">
-  <div class="post-container">
-    <div class="post-name">
-      <div class="post-picture" :style="cavatar"></div>
-      <div class="post-author"> {{author.firstname}} {{author.lastname}}</div>
-      <div class="post-time">{{createTime}}</div>
+    <div class="post-container">
+      <div class="post-name">
+        <div class="post-picture" :style="cavatar"></div>
+        <div class="post-author"> {{author.firstname}} {{author.lastname}}</div>
+        <div class="post-time">{{createTime}}</div>
+      </div>
+      <div class="post-content" :style="cpost"></div>
+      <div class="post-text">{{ ctext }}</div>
+      <div class="post-like">
+        <button type="button" class="post-like-button" @click="like()" v-bind:style="{backgroundColor: ccolor, color: ctextcolor}">
+          {{ clikes }}
+        </button>
+      </div>
     </div>
-    <div class="post-container" :style="cpost"></div>
-    <div class="post-text">{{ ctext }}</div>
-    <div class="post-like">
-      <button type="button" class="post-like-button" @click="like()" v-bind:style="{backgroundColor: ccolor, color: ctextcolor}">
-        {{ clikes }}
-      </button>
-    </div>
-  </div>
-  </div>
 </template>
 <script>
 export default {
@@ -81,10 +79,7 @@ export default {
 }
 </script>
 <style scoped>
-.post {
-  width: 100%;
-  height: 100%;
-}
+
 
 .post-container {
   width: 100%;
@@ -93,6 +88,10 @@ export default {
   margin: auto auto;
   box-shadow: 0 0 15px rgba(38, 50, 56, 0.33);
   border-radius: 5px;
+}
+
+.post-content {
+  width: 100%;
 }
 
 .post-picture {
