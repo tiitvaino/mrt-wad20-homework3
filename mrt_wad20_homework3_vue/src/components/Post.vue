@@ -5,6 +5,11 @@
         <div class="post-author"> {{author.firstname}} {{author.lastname}}</div>
         <div class="post-time">{{createTime}}</div>
       </div>
+      <div class="post-content" v-if="cpostvideo">
+        <video width=100% controls>
+          <source :src="cpostvideourl" type="video/mp4">
+        </video>
+      </div>
       <div class="post-content" :style="cpost"></div>
       <div class="post-text">{{ ctext }}</div>
       <div class="post-like">
@@ -49,8 +54,16 @@ export default {
       return `content: url('${this.media.url}')`;
     },
 
+    cpostvideourl: function () {
+      return this.media.url;
+    },
+
+    cpostvideo: function () {
+      return this.media.type=="video";
+    },
+
     clikes: function () {
-      return this.likes
+      return this.likes;
     }
   },
 
@@ -88,6 +101,7 @@ export default {
   margin: auto auto;
   box-shadow: 0 0 15px rgba(38, 50, 56, 0.33);
   border-radius: 5px;
+
 }
 
 .post-content {
