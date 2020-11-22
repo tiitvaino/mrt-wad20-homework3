@@ -23,10 +23,14 @@
 
     computed: {
       posts: function() {
-        if (this.internalpostlist.length == 0)
+        if (this.$store.getters.getPosts().length == 0)
           this.loadPostsRequest();
 
-        return this.internalpostlist;
+        return this.$store.getters.getPosts();
+      },
+
+      cuser: function() {
+        return this.$store.getters.getUser();
       }
     },
 
@@ -38,16 +42,15 @@
     },
     methods: {
       loadPostsRequest: async function() {
-        console.log("Getting posts: start");
         await axios.get('https://private-anon-7a5a5239ec-wad20postit.apiary-mock.com/posts')
 
             .then((response) => {
-              this.internalpostlist = response.data;
+              this.$store.commit('setPosts', response.data);
             })
 
             .catch(function(error) {
               console.log(error);
-              alert('error: could not load posts');
+              alert('error: could not load profiles');
             });
       }
     },

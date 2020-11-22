@@ -27,11 +27,15 @@ const router = new VueRouter({routes});
 const store = new Vuex.Store({
   state: {
     user: new Profile("Firstname","Lastname","email@email.email","./images/avatar.png"),
-    profiles: []
+    profiles: [],
+    posts: []
   },
   mutations: {
     setProfiles: function(state, newProfiles) {
       this.state.profiles = newProfiles;
+    },
+    setPosts: function (state, newPosts) {
+      this.state.posts = newPosts;
     }
   },
   getters: {
@@ -41,6 +45,10 @@ const store = new Vuex.Store({
 
     getProfiles: (state) => () => {
       return state.profiles;
+    },
+
+    getPosts: (state) => () => {
+      return state.posts;
     }
   },
 });
