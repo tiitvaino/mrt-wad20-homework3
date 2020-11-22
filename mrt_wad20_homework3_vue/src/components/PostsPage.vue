@@ -61,7 +61,7 @@
   }
 </script>
 <style scoped>
-  .post {
+/* .post {
     width: 80%;
     margin: 15px auto;
     box-shadow: 0 0 15px rgba(38, 50, 56, 0.33);
@@ -124,6 +124,6 @@ video {
 
 .post .post-title~.post-actions {
     padding: 10px;
-}
+} */
 
 </style>

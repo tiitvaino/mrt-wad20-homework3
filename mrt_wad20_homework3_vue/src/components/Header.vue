@@ -5,7 +5,7 @@
         <img src="/images/logo.png" alt="postIt">
       </div>
       <div class="search-container">
-        <input type="text" name="search"><button type="button">Search</button>
+        <input type="text" name="search" v-model="capitalize"><button type="button">Search</button>
       </div>
       <div class="avatar-container">
         <img class="avatar" alt="Me"
@@ -29,6 +29,7 @@
   </header>
 </template>
 <script>
+import axios from 'axios'
 export default {
     name: 'Header',
     data: function () {
@@ -36,13 +37,17 @@ export default {
     },
     computed: {
       user: function () {
-        return this.$store.state.user
+        if (!this.$store.getters.getUser()){
+          this.loadUserRequest();
+        }
+
+        return this.$store.getters.getUser();
       }
     },
     props: {
 
     },
-    mehtods: {
+    methods: {
       showUserInfo: function(){
         if (this.isUserDisplayed == "none"){
           this.isUserDisplayed = "block";
@@ -50,11 +55,25 @@ export default {
         else {
           this.isUserDisplayed = "none";
         }
+      },
+    loadUserRequest: async function() {
+      await axios.get('https://private-anon-88cfa17c4c-wad20postit.apiary-mock.com/users/1')
 
-      }
+        .then((response) => {
+          console.log(response)
+          this.$store.commit('setUser', response.data);
+        })
+
+        .catch(function(error) {
+          console.log(error);
+          alert('error: could not load user');
+        });
+    },
+
     },
 
 }
+
 </script>
 <style scoped>
   header {
