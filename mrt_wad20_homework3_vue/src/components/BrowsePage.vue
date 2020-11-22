@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- <div v-for="n in names" v-bind:key='n'>{{ n }}</div> -->
-    <!-- <Header :user="user"/> -->
+  <Header :user="user"/>
     <section class="main-container">
       <div class="profiles">
         <Profile v-for="thing in profiles" v-bind:key='thing.id' :avatar='thing.avatar' :first_name='thing.firstname' :last_name='thing.lastname'></Profile>
@@ -10,7 +9,7 @@
   </div>
 </template>
 <script>
-// import Header from './Header'
+import Header from './Header'
 import Profile from './Profile'
 import axios from 'axios'
 
@@ -48,7 +47,7 @@ export default {
   },
 
   components: {
-    // Header,
+    Header,
     Profile
   }
 }
