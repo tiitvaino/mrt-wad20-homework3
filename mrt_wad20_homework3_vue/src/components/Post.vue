@@ -11,9 +11,9 @@
           <source :src="cpostvideourl" type="video/mp4">
         </video>
       </div>
-      <div class="post-content" :style="cpost"></div>
+      <div class="post-content" v-if="cpostexists" :style="cpost"></div>
       <div class="post-text">{{ ctext }}</div>
-      <div class="post-like" img src="/images/like.png">
+      <div class="post-like">
         <button type="button" class="post-like-button" @click="like()" v-bind:style="{backgroundColor: ccolor}">
           {{ clikes }}
         </button>
@@ -56,11 +56,15 @@ export default {
     },
 
     cpostvideo: function () {
-      return this.media.type=="video";
+      return this.media!=null && this.media.type=="video";
     },
 
     clikes: function () {
       return this.likes;
+    },
+
+    cpostexists: function () {
+      return this.media!=null;
     }
   },
 
@@ -88,8 +92,14 @@ export default {
 </script>
 <style scoped>
 
+  * {
+    font: 15px "Roboto Slab", serif;
+    outline: none;
+  }
+
 .post {
   min-width: 100%;
+
 }
 
 
@@ -140,7 +150,8 @@ export default {
 .post-text {
   padding-top: 10px;
   padding-left: 10px;
-  font-size: 150%;
+  font-size: 130%;
+  font-weight: 600;
 }
 .post-like-button{
   background-image: url(/images/like.png);
